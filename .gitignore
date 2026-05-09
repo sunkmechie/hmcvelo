@@ -1,6 +1,7 @@
 # Python-generated files
 __pycache__/
 *.py[oc]
+*.py[cod]
 build/
 dist/
 wheels/
@@ -9,3 +10,19 @@ wheels/
 # Virtual environments
 .venv
 HMCVelo_paper.md
+
+# Data
+data/
+*.tar
+*.cov
+*.cov.gz
+*.bismark.cov
+*.h5ad
+*.h5
+*.loom
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store

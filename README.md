@@ -46,7 +46,20 @@ hmcvelo-package/
 
 ```
 
+## Data
 
+### Experiment 1 (GEO SuperSeries GSE236798)
+Download from NCBI GEO:
+- ACE-seq (5hmC): https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE236784
+- Bisulfite-seq (5mC+5hmC): https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE236789
+
+### Experiment 2
+In-house Wu lab dataset, not yet publicly available.
+Contact authors or check: https://github.com/prmshr/HMCVelo
+
+### Setup
+mkdir -p data/ace_seq data/bisulfite
+# then extract RAW.tar files into respective folders
 
 ## Installation
 
