@@ -1,11 +1,93 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "hmcvelo"
 version = "0.1.0"
-description = "Add your description here"
+description = "Hydroxymethylation Velocity for single cells, unofficial implementation of Mishra (2026)"
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = [
-    "matplotlib>=3.10.9",
-    "scipy>=1.17.1",
-    "sympy>=1.14.0",
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [
+    { name = "Surya Sunkara" }
 ]
+keywords = [
+    "single-cell", "epigenomics", "DNA methylation",
+    "5hmC", "5mC", "velocity", "trajectory inference",
+    "bioinformatics", "computational biology"
+]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "anndata>=0.9",
+    "pandas>=1.5",
+]
+
+[project.optional-dependencies]
+# Full pipeline with embedding + plots
+embed = [
+    "scvelo>=0.2.5",
+    "scanpy>=1.9",
+    "matplotlib>=3.6",
+    "umap-learn>=0.5",
+    "leidenalg>=0.9",
+    "python-igraph>=0.10",
+]
+
+# GPU acceleration
+gpu = [
+    "cupy-cuda12x>=12.0",
+]
+
+# Clifford algebra reformulation
+clifford = [
+    "clifford>=1.4",
+]
+
+# Development
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "jupyter>=1.0",
+    "ipykernel>=6.0",
+    "black>=23.0",
+    "ruff>=0.1",
+]
+
+# Everything
+all = [
+    "hmcvelo[embed,clifford,dev]"
+]
+
+[project.urls]
+"Paper" = "https://doi.org/10.64898/2026.04.20.719607"
+"GEO Data" = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE236798"
+"Official Repo" = "https://github.com/prmshr/HMCVelo"
+"Bug Tracker" = "https://github.com/sunkmechie/HMCVelo/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["hmcvelo", "clifford"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.black]
+line-length = 100
+target-version = ["py39"]
