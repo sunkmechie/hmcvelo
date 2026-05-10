@@ -127,7 +127,7 @@ def least_squares_params(
     return beta_M, beta_D
 
 
-def _cytosine_proportions(
+def infer_cytosine_proportions(
     xm: np.ndarray,
     xh: np.ndarray,
 ) -> np.ndarray:
