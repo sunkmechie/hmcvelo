@@ -319,7 +319,7 @@ def _read_bismark(path: Union[str, Path], min_coverage: int = 1):
     """Read a bismark.cov file into a DataFrame."""
     import pandas as pd
     df = pd.read_csv(
-        str(path), sep="\t", header=None,
+        str(path), sep="\t", header=None, compression="infer",
         names=["chrom", "start", "end", "pct_meth", "methylated", "unmethylated"],
     )
     coverage = df["methylated"] + df["unmethylated"]
